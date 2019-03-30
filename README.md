@@ -1,56 +1,56 @@
 
-  ##usersテーブル
-  |Column|Type|Options|
-  |------|----|-------|
-  |name|string|null: false|
-  |e-mail|string|null: false|
+##usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|index: true,null: false,unique: true|
+|e-mail|string|null: false|
 
 
-  ### Association
-  - has_many :messages
-  - has_many :members
-  - has_many :groups,through: :members
+### Association
+- has_many :messages
+- has_many :members
+- has_many :groups,through: :members
 
 
-  ## groupテーブル
+## groupテーブル
 
-  |Column|Type|Options|
-  |------|----|-------|
-  |user_id|references|null:false,foreign_key:true|
-  |group_id|references|null:false,foreign_key:true|
-
-
-
-  ### Association
-  - has_many :messages
-  - has_many :members
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|user_id|references|null:false,foreign_key:true|
 
 
-
-
-  ## membersテーブル
-
-  |Column|Type|Options|
-  |------|----|-------|
-  |group_id|references|null:false,foreign_key:true|
-  |user_id|references|null:false,foreign_key:true|
-
-  ### Association
-  - belongs_to :group
-  - belongs_to :user
+### Association
+- has_many :messages
+- has_many :members
+- has/many :users,through: :members
 
 
 
 
-  ## messagesテーブル
+## membersテーブル
 
-  |Column|Type|Options|
-  |------|----|-------|
-  |text|text|null:false|
-  |image|string|
-  |group_id|references|null:false,foreign_key:true|
-  |user_id|references|null:false,foreign_key:true|
+|Column|Type|Options|
+|------|----|-------|
+|group_id|references|null:false,foreign_key:true|
+|user_id|references|null:false,foreign_key:true|
 
-  ### Association
-  - belongs_to :group
-  - belongs_to :user
+### Association
+- belongs_to :group
+- belongs_to :user
+
+
+
+
+## messagesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null:false|
+|image|string|
+|group_id|references|null:false,foreign_key:true|
+|user_id|references|foreign_key:true|
+
+### Association
+- belongs_to :group
+- belongs_to :user
