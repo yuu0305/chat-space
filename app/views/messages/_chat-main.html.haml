@@ -1,7 +1,35 @@
 .chat-main
+
+
   .chat-main__header
-    .chat-main__header__left aaa
-    .chat-main__header__right edit
+    .chat-main__header__left
+      .chat-main__header__left__title aaaa
+      %ul.left-header__members
+        Member :
+        %li.member test0000
+
+    .chat-main__header__right
+      %a.right{:href => "/"}  Edit
+
+
+
   .chat-main__messages
+    .chat-main__messages__message
+      .chat-main__messages__message__upper
+        .chat-main__messages__message__upper__user-name test0000
+        .chat-main__messages__message__upper__date 2019/04/01 12:50
+      .chat-main__messages__message__lower
+        .chat-main__messages__message__lower__content aaaaaaaa
+
+
+
 
   .chat-main__form
+    %input.form{ placeholder: 'type a message'}
+
+    .chat-main__form__picture
+      %label
+        %i.far.fa-image
+        %input.message_image{:style => "display:none",:type => "file"}
+
+    %input.btn{:type => "submit", :value => "Send"}
