@@ -9,7 +9,8 @@
         %li.member test0000
 
     .chat-main__header__right
-      %a.right{:href => "/"}  Edit
+      = link_to edit_group_path(params[:group_id])do
+        Edit
 
 
 
