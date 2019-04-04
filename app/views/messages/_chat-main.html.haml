@@ -16,21 +16,38 @@
 
   .chat-main__messages
     .chat-main__messages__message
+    - @messages.each do |message|
       .chat-main__messages__message__upper
-        .chat-main__messages__message__upper__user-name test0000
-        .chat-main__messages__message__upper__date 2019/04/01 12:50
+        .chat-main__messages__message__upper__user-name
+          = message.user.name
+        .chat-main__messages__message__upper__date
+          = message.created_at.strftime("%Y/%m/%d %H:%M")
       .chat-main__messages__message__lower
-        .chat-main__messages__message__lower__content aaaaaaaa
-
-
+        - if message.content.present?
+          .chat-main__messages__message__lower__content
+            = message.content
+        = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
 
 
   .chat-main__form
-    %input.form{ placeholder: 'type a message'}
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form', placeholder: 'type a message'
+      .chat-main__form__picture
+        = f.label :image do
+          = fa_icon 'picture-o'
+          = f.file_field :image, class: 'message_image', style:"display:none"
 
-    .chat-main__form__picture
-      %label
-        %i.far.fa-image
-        %input.message_image{:style => "display:none",:type => "file"}
+      = f.submit 'Send', class: 'btn'
 
-    %input.btn{:type => "submit", :value => "Send"}
+
+  / .chat-main__form
+  /   %input.form{ placeholder: 'type a message'}
+
+  /   .chat-main__form__picture
+  /     %label
+  /       %i.far.fa-image
+  /       %input.message_image{:style => "display:none",:type => "file"}
+
+/  fa_icon "chevron-right", text: "Get started", right: true
+/ # => Get started <i class="fa fa-chevron-right"></i>
+
