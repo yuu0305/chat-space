@@ -46,12 +46,11 @@ $(function(){
       contentType: false
     })
 
-    .done(function(data){
-      var html = buildHTML(data);
+    .done(function(message){
+      var html = buildHTML(message);
       $('.chat-main__messages').append(html)
-      $('.form').val('');
+      $('.new_message')[0].reset();
        //送信後フォームを空に
-      // autoScroll();
       $(".chat-main__messages").animate({scrollTop:10000});
 
       })
