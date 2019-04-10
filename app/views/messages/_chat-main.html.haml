@@ -30,7 +30,7 @@
 
 
   .chat-main__form
-    = form_for [@group, @message] do |f|
+    = form_for [@group, @message],id:"new_message" do |f|
       = f.text_field :content, class: 'form', placeholder: 'type a message'
       .chat-main__form__picture
         = f.label :image do
@@ -43,10 +43,9 @@
   / .chat-main__form
   /   %input.form{ placeholder: 'type a message'}
 
-  /   .chat-main__form__picture
-  /     %label
-  /       %i.far.fa-image
-  /       %input.message_image{:style => "display:none",:type => "file"}
+
+
+
 
 /  fa_icon "chevron-right", text: "Get started", right: true
 / # => Get started <i class="fa fa-chevron-right"></i>
