@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   // 画面に表示する、自分が設定したHTML（検証から取ってくる）
   function buildHTML(message)
 

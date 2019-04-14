@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.where('name LIKE(?)',"%#{params[:name]}%").where.not(id: current_user.id)
+    # 検索結果から自分を外す
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   def show
   end
 
