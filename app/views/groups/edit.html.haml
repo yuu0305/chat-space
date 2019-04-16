@@ -1,3 +1,4 @@
 .chat-group-form
   %h1 チャットグループ編集
+  =link_to "グループ削除", group_path(@group), method: :delete
   = render partial: 'form', locals: { group: @group }
