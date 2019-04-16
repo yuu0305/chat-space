@@ -55,7 +55,6 @@ $(function(){
 
 //追加の処理
   $(document).on('click' ,".js-add-btn",function(){
-    console.log("a")
     var id = $(this).data('user-id');//上記のdataで設定してる
     var name = $(this).data('user-name');//同じ
     var insertHTML = buildHTML(id,name);
