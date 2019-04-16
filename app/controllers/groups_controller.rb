@@ -23,6 +23,15 @@ def edit
 
 end
 
+def destroy
+  @group = Group.find(params[:id])
+  if @group.destroy
+    redirect_to root_path(), alert:"グループ削除が完了しました"
+  else
+    render :index, alert:"グループ削除に失敗しました"
+  end
+end
+
  def update
     if @group.update(group_params)
       redirect_to group_messages_path(@group), notice: 'グループを編集しました'
@@ -33,7 +42,7 @@ end
 
   private
   def group_params
-    params.require(:group).permit(:name, { :user_ids => [] })
+    params.require(:group).permit(:name, { user_ids:[] })
   end
 
   def set_group

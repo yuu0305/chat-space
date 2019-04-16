@@ -22,13 +22,13 @@
       %label.chat-group-form__label{ for: "chat_group_チャットメンバー"} チャットメンバー
 
   #chat-group-users
-    -@group.group_users.each do |users|
+    -group.users.each do |user|
       #chat-group-user.chat-group-user.clearfix
-        %input{ name: "group[user_ids][]", type: "hidden", value: "#{users.user_id}"}
+        %input{ name: "group[user_ids][]", type: "hidden", value: "#{user.id}"}
         /user_ids[]に現在ログインしてるuserのIDを初期値として与えている。
         /追加されるuser_idもuser_idsに格納されている
         %p.chat-group-user__name
-          = users.user.name
+          = user.name
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right

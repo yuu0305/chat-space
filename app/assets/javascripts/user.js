@@ -1,11 +1,10 @@
-$(document).on('turbolinks:load', function(){
-
+$(function(){
   var search_list = $("#user-search-result");//取ってきたユーザーの名前をどこに表示するか
 
   function appendUser(user) {
     var html = `
       <div class="js-user-seaerch-result">
-        <div class="chat-group-user clearfix">
+        <div class="chat-group-user clearfix" id="chat-group-user-${user.id}">
           <p class="chat-group-user__name">${user.name}</p>
           <a class="user-search-add chat-group-user__btn chat-group-user__btn--add js-add-btn" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
         </div>
@@ -44,8 +43,7 @@ $(document).on('turbolinks:load', function(){
       if (users.length !== 0 && input.length !== 0 ) {
         users.forEach(function(user){
           appendUser(user);
-
-    });
+     });
       }else {
         appendErrMsgToHTML()
       }
@@ -56,7 +54,7 @@ $(document).on('turbolinks:load', function(){
   });
 
 //追加の処理
-  $(document).on('click',".user-search-add",function(){
+  $(document).on('click' ,".js-add-btn",function(){
     var id = $(this).data('user-id');//上記のdataで設定してる
     var name = $(this).data('user-name');//同じ
     var insertHTML = buildHTML(id,name);

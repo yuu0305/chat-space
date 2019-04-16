@@ -1,4 +1,5 @@
 # json.(@message, :content ,:image)
+json.id  @message.id
 json.content  @message.content
 json.image   @message.image.url   #検証でimageだけurlがついてること確認
 json.user_id  @message.user.id
