@@ -13,7 +13,7 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.3.1'
 
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['segawa_key_pair']
+                  keys: ['~/.ssh/segawa_key_pair.pem']
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
